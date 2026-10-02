@@ -140,6 +140,30 @@ export default function ProjectCard({ project, preview = false }) {
                 Live
               </a>
             ) : null}
+            {project.frontendUrl ? (
+              <a
+                className="project-card__link"
+                href={project.frontendUrl}
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label={`${project.title} JavaScript UI repository`}
+              >
+                <IconGitHub width={15} height={15} />
+                JS UI
+              </a>
+            ) : null}
+            {project.apiDocs ? (
+              <a
+                className="project-card__link"
+                href={project.apiDocs}
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label={`${project.title} API documentation`}
+              >
+                <IconExternal width={14} height={14} />
+                API Docs
+              </a>
+            ) : null}
             {!preview ? (
               <button
                 type="button"

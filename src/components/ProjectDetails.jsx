@@ -102,6 +102,17 @@ export default function ProjectDetails() {
               Repository
             </a>
           ) : null}
+          {project.frontendUrl ? (
+            <a
+              className="btn btn--ghost btn--sm"
+              href={project.frontendUrl}
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <IconGitHub width={15} height={15} />
+              JavaScript UI
+            </a>
+          ) : null}
           {project.liveUrl ? (
             <a
               className="btn btn--primary btn--sm"

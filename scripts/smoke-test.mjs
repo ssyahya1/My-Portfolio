@@ -83,21 +83,21 @@ const check = (label, condition, extra = '') => {
 console.log('\n1. Repository filtering')
 const { projects, hidden } = buildProjectsFromRepos(repos)
 const names = projects.map((project) => project.githubRepo)
-check('11 curated repositories included', projects.length === 11, `got ${projects.length}`)
+check('10 curated repositories included', projects.length === 10, `got ${projects.length}`)
 check('Python- excluded', !names.includes('Python-'))
 check('dotfiles excluded', !names.includes('dotfiles'))
 check('forked repo excluded', !names.includes('some-forked-repo'))
 check('unknown ML repo auto-included', names.includes('sales-forecasting-model'))
 check('every exclusion has a reason', hidden.every((item) => item.reason && item.reason.length > 10))
-check('excluded list reports 3 items', hidden.length === 3, hidden.map((h) => h.name).join(', '))
+check('excluded list reports 4 items', hidden.length === 4, hidden.map((h) => h.name).join(', '))
 
 console.log('\n2. Categorisation and model shape')
 const byRepo = Object.fromEntries(projects.map((project) => [project.githubRepo, project]))
 check('smart-ev-optimizer is Full-Stack', byRepo['smart-ev-optimizer'].category === 'Full-Stack')
 check('hospital-management-system is Full-Stack', byRepo['hospital-management-system'].category === 'Full-Stack')
-check('Fraud-detection- is Machine Learning', byRepo['Fraud-detection-'].category === 'Machine Learning')
+check('Fraud-detection- is Full-Stack', byRepo['Fraud-detection-'].category === 'Full-Stack')
 check('Supply-Chain is Data Science', byRepo['Supply-Chain-Data-Analyst-'].category === 'Data Science')
-check('fraud-detection-ui- is Frontend', byRepo['fraud-detection-ui-'].category === 'Frontend')
+check('JavaScript UI repo is combined, not listed separately', !byRepo['fraud-detection-ui-'])
 check(
   'unknown repo category inferred',
   byRepo['sales-forecasting-model'].category !== 'Other',
@@ -121,13 +121,34 @@ check(
 )
 check('curated repo not flagged', byRepo['smart-ev-optimizer'].needsDescription === false)
 check('featured flag from curation', byRepo['smart-ev-optimizer'].featured === true)
+check('combined fraud project appears only in the main grid', byRepo['Fraud-detection-'].featured === false)
 check(
   'project model has all keys',
-  ['id', 'source', 'githubRepo', 'title', 'category', 'description', 'technologies', 'features', 'githubUrl', 'liveUrl', 'image', 'date', 'featured', 'published'].every(
+  ['id', 'source', 'githubRepo', 'title', 'category', 'description', 'technologies', 'features', 'githubUrl', 'liveUrl', 'frontendUrl', 'image', 'date', 'featured', 'published'].every(
     (key) => key in byRepo['Fraud-detection-'],
   ),
 )
 check('live url captured', byRepo['smart-ev-optimizer'].liveUrl.includes('vercel.app'))
+check(
+  'Fraud Detection live demo uses its deployed JavaScript UI',
+  byRepo['Fraud-detection-'].liveUrl === 'https://ssyahya1.github.io/fraud-detection-ui-/',
+)
+check(
+  'ML and analytics demos use the supplied app URLs',
+  [
+    ['Customer--Response-Prediction', 'https://customer--response-prediction.streamlit.app/'],
+    ['Heart-Stroke-Prediction-', 'https://heart-stroke-predi.streamlit.app/'],
+    ['House-Price-Prediction-', 'https://house-price-esti.streamlit.app/'],
+    ['Movie-Recommendation-System-', 'https://movie-recommendation-nlp-app.streamlit.app/'],
+    ['Superstore-Sales-Prediction', 'https://superstore-sales-prediction-app.streamlit.app/'],
+    ['Supply-Chain-Data-Analyst-', 'https://supply-chain-dashboard-app.streamlit.app/'],
+  ].every(([repoName, url]) => byRepo[repoName].liveUrl === url),
+)
+check('JS UI repository link captured', byRepo['Fraud-detection-'].frontendUrl.endsWith('/fraud-detection-ui-'))
+check(
+  'combined project uses JavaScript and omits Streamlit',
+  byRepo['Fraud-detection-'].technologies.includes('JavaScript') && !byRepo['Fraud-detection-'].technologies.includes('Streamlit'),
+)
 check('ds metadata present on Fraud-detection-', Boolean(byRepo['Fraud-detection-'].ds && byRepo['Fraud-detection-'].ds.model))
 check('every visible project has technologies', projects.every((project) => project.technologies.length > 0))
 
@@ -168,8 +189,8 @@ check('duplicate of a GitHub repo is dropped', duplicate.dropped.length === 1, J
 
 console.log('\n4. Filtering and search')
 const ml = filterProjects(projects, { category: 'Machine Learning' })
-check('category filter works', ml.length === 7, String(ml.length))
-check('All filter returns everything', filterProjects(projects, { category: 'All' }).length === 11)
+check('category filter works', ml.length === 6, String(ml.length))
+check('All filter returns everything', filterProjects(projects, { category: 'All' }).length === 10)
 check('search matches title', filterProjects(projects, { search: 'hospital' }).length === 1)
 check('search matches technology', filterProjects(projects, { search: 'postgresql' }).length >= 2)
 check('search is case insensitive', filterProjects(projects, { search: 'FASTAPI' }).length >= 1)
@@ -177,10 +198,10 @@ check('search with no match returns empty', filterProjects(projects, { search: '
 const options = computeFilterOptions(projects)
 check('filter options start with All', options[0].name === 'All')
 check('filter options cover the seven base filters', options.length === 7, JSON.stringify(options.map((o) => `${o.name}:${o.count}`)))
-check('All count equals project count', options[0].count === 11)
+check('All count equals project count', options[0].count === 10)
 check(
   'category counts add up to the total',
-  options.slice(1).reduce((sum, option) => sum + option.count, 0) === 11,
+  options.slice(1).reduce((sum, option) => sum + option.count, 0) === 10,
   JSON.stringify(options),
 )
 

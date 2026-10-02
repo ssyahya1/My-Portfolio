@@ -165,17 +165,22 @@ export const REPO_CURATION = {
   },
 
   'Fraud-detection-': {
-    title: 'Fraud Detection - Machine Learning Service',
-    category: 'Machine Learning',
-    featured: true,
+    title: 'Fraud Detection | JavaScript UI + FastAPI',
+    category: 'Full-Stack',
     date: '2026-08-21',
     image: 'https://raw.githubusercontent.com/ssyahya1/Fraud-detection-/main/assets/logo.png',
     apiDocs: 'https://fraud-detection.fastapicloud.dev/docs',
+    liveUrl: 'https://ssyahya1.github.io/fraud-detection-ui-/',
+    frontendUrl: 'https://github.com/ssyahya1/fraud-detection-ui-',
     description:
-      'Transaction fraud detection: a machine learning pipeline served behind a FastAPI service, with a multi-page Streamlit interface in front of it.',
+      'End-to-end transaction fraud detection: a responsive JavaScript interface connected to a FastAPI machine-learning backend.',
     longDescription:
-      'The clearest example in my work of AI treated as an engineering problem rather than a notebook. The model is served behind a FastAPI endpoint and the interface is a separate deployment that calls it. Four classifiers were trained and compared, an automated preprocessing pipeline handles scaling, encoding and class imbalance with SMOTE, and a tuned Random Forest pipeline is the version the API serves. Instead of accepting the default 0.5 cut-off, the service applies a stored 0.40 probability threshold and returns the probability, the threshold and the resulting classification together, so a decision can be explained rather than just asserted. The README is explicit that the dataset is synthetic and that the output is educational, and I kept that disclaimer.',
+      'Two repositories work together as one application. A standalone HTML, CSS and JavaScript client provides dashboard, transaction-check, analytics, about and API-status views; it checks the deployed FastAPI service and sends transaction data to its prediction endpoint. The backend compares four classifiers, handles preprocessing and class imbalance with SMOTE, and serves a tuned Random Forest pipeline. Each prediction includes its fraud probability, the stored 0.40 threshold and the resulting classification. The dataset is synthetic and the output is educational.',
     technologies: [
+      'HTML',
+      'CSS',
+      'JavaScript',
+      'Fetch API',
       'Python',
       'Pandas',
       'NumPy',
@@ -187,18 +192,19 @@ export const REPO_CURATION = {
       'Joblib',
       'FastAPI',
       'Uvicorn',
-      'Streamlit',
       'Jupyter Notebook',
     ],
     features: [
+      'Responsive JavaScript single-page interface with dashboard, transaction check, analytics, about and API status views',
+      'Transaction form with client-side validation and live risk-score feedback',
+      'Live API status check and prediction requests to the FastAPI backend',
       'Random Forest pipeline with automatic preprocessing',
       'SMOTE for class imbalance',
       'Custom 0.40 probability threshold instead of the default 0.5',
       'Four classifiers compared before model selection',
       'GridSearchCV / RandomizedSearchCV tuning',
       'FastAPI endpoint returning probability, threshold and decision',
-      'Streamlit pages: dashboard, dataset, prediction, about',
-      'Interface and model service deployed separately',
+      'JavaScript interface and model service maintained in separate repositories',
     ],
     ds: {
       dataset:
@@ -209,7 +215,7 @@ export const REPO_CURATION = {
         'One preprocessing pipeline performs numeric scaling with StandardScaler and One-Hot encoding of categoricals, with SMOTE applied, so training and prediction use identical transformations.',
       analysis:
         'Exploratory analysis of the transaction attributes against the fraud label, with the dataset also documented inside the application.',
-      visualization: 'Matplotlib and Seaborn charts in the notebook and on the Streamlit dashboard page.',
+      visualization: 'Matplotlib and Seaborn for exploratory analysis; the JavaScript client includes an analytics view.',
       model:
         'Logistic Regression, Decision Tree, Random Forest and XGBoost were trained and compared; the served model is a Random Forest pipeline tuned with GridSearchCV / RandomizedSearchCV.',
       evaluation:
@@ -224,6 +230,7 @@ export const REPO_CURATION = {
     category: 'Machine Learning',
     featured: true,
     date: '2026-08-05',
+    liveUrl: 'https://house-price-esti.streamlit.app/',
     description:
       'End-to-end regression project that estimates house prices, from cleaning and EDA to a tuned model served through a multi-page Streamlit app.',
     longDescription:
@@ -271,6 +278,7 @@ export const REPO_CURATION = {
     title: 'Superstore Sales Prediction',
     category: 'Machine Learning',
     date: '2026-07-29',
+    liveUrl: 'https://superstore-sales-prediction-app.streamlit.app/',
     description:
       'Regression study on the Kaggle Superstore dataset comparing four models to predict order sales - and reporting the result honestly, including where the data runs out.',
     longDescription:
@@ -317,6 +325,7 @@ export const REPO_CURATION = {
     title: 'Movie Recommendation System',
     category: 'Machine Learning',
     date: '2026-07-29',
+    liveUrl: 'https://movie-recommendation-nlp-app.streamlit.app/',
     description:
       'Content-based recommender that suggests similar films from genres, cast, crew and keywords, with precomputed similarity data served through Streamlit.',
     longDescription:
@@ -351,6 +360,7 @@ export const REPO_CURATION = {
     title: 'Heart Disease Prediction System',
     category: 'Machine Learning',
     date: '2026-07-29',
+    liveUrl: 'https://heart-stroke-predi.streamlit.app/',
     description:
       'Streamlit application that estimates heart disease risk from patient health measurements using a trained, scaled model.',
     longDescription:
@@ -394,6 +404,7 @@ export const REPO_CURATION = {
     title: 'Customer Response Prediction',
     category: 'Machine Learning',
     date: '2026-07-26',
+    liveUrl: 'https://customer--response-prediction.streamlit.app/',
     description:
       'Predicts whether a customer will respond to a marketing campaign, covering cleaning, feature engineering, tuning and model selection.',
     longDescription:
@@ -440,6 +451,7 @@ export const REPO_CURATION = {
     title: 'Supply Chain Analytics Dashboard',
     category: 'Data Science',
     date: '2026-07-30',
+    liveUrl: 'https://supply-chain-dashboard-app.streamlit.app/',
     description:
       'Streamlit analytics dashboard connected to a MySQL product database, reporting inventory, pricing and availability insights through interactive charts.',
     longDescription:
@@ -500,6 +512,7 @@ export const REPO_CURATION = {
 export const EXCLUDED_REPOS = {
   'Python-':
     'Course practice repository ("Bano qabil 2.0"): assignment scripts only, no application, no README content and no description to present.',
+  'fraud-detection-ui-': 'Shown with its FastAPI backend in the combined Fraud Detection project entry.',
 }
 
 /** Repository names matching these are treated as scratch work. */
@@ -745,6 +758,7 @@ export function repoToProject(repo = {}) {
     githubUrl: repo.html_url || `https://github.com/${GITHUB_USERNAME}/${repo.name}`,
     liveUrl: curated.liveUrl || repo.homepage || '',
     apiDocs: curated.apiDocs || '',
+    frontendUrl: curated.frontendUrl || '',
     image: curated.image || '',
 
     date: curated.date || (repo.pushed_at || repo.updated_at || '').slice(0, 10),

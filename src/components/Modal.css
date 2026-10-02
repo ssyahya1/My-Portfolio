@@ -1,0 +1,123 @@
+.modal-root {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(0.75rem, 3vw, 2.5rem) clamp(0.6rem, 3vw, 1.5rem);
+  overflow-y: auto;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(12, 18, 30, 0.42);
+  animation: fade-in 180ms var(--ease);
+}
+
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  margin: auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  animation: pop-in 220ms var(--ease);
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - clamp(1.5rem, 6vw, 5rem));
+}
+
+.modal--lg {
+  max-width: 880px;
+}
+
+.modal:focus {
+  outline: none;
+}
+
+.modal__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: clamp(1rem, 2.2vw, 1.4rem) clamp(1rem, 2.6vw, 1.6rem);
+  border-bottom: 1px solid var(--border);
+}
+
+.modal__headings {
+  min-width: 0;
+}
+
+.modal__title {
+  margin: 0;
+  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+}
+
+.modal__subtitle {
+  margin: 0.3rem 0 0;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+
+.modal__close {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease);
+}
+
+.modal__close:hover {
+  background: var(--bg-muted);
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+
+.modal__body {
+  padding: clamp(1rem, 2.6vw, 1.6rem);
+  overflow-y: auto;
+  min-width: 0;
+}
+
+.modal__foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  align-items: center;
+  justify-content: flex-end;
+  padding: clamp(0.85rem, 2vw, 1.25rem) clamp(1rem, 2.6vw, 1.6rem);
+  border-top: 1px solid var(--border);
+  background: var(--bg-soft);
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+}
+
+@media (max-width: 640px) {
+  .modal-root {
+    padding: 0;
+  }
+
+  .modal {
+    max-height: 100vh;
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    min-height: 100%;
+  }
+
+  .modal__foot {
+    border-radius: 0;
+  }
+}

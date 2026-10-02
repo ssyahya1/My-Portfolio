@@ -1,0 +1,216 @@
+.footer {
+  border-top: 1px solid var(--border);
+  background: var(--bg-soft);
+  padding-block: clamp(2rem, 4vw, 3rem) 1.5rem;
+}
+
+.footer__top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 0.9fr);
+  gap: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.footer__brand {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.footer__mark {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  flex: none;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.footer__brand strong {
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+}
+
+.footer__role {
+  margin: 0.15rem 0 0;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.footer__nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.3rem 0.75rem;
+}
+
+.footer__nav a {
+  font-size: 0.86rem;
+  color: var(--text-soft);
+}
+
+.footer__nav a:hover {
+  color: var(--accent);
+}
+
+.footer__links {
+  display: grid;
+  gap: 0.4rem;
+  align-content: start;
+}
+
+.footer__links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.86rem;
+  color: var(--text-soft);
+}
+
+.footer__links a:hover {
+  color: var(--accent);
+}
+
+.footer__links a.is-pending {
+  color: var(--text-muted);
+  opacity: 0.75;
+}
+
+/* ---------------------------------------------------------------- middle */
+.footer__middle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.footer__note {
+  margin: 0;
+  max-width: 62ch;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.footer__admin {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.footer__admin-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 650;
+  color: var(--accent-text);
+}
+
+.footer__admin-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+
+.footer__admin-btn:hover {
+  color: var(--accent-text);
+  border-color: var(--accent);
+}
+
+.footer__confirm {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.8rem;
+}
+
+.footer__danger {
+  --btn-bg: var(--danger);
+  --btn-fg: #ffffff;
+  --btn-border: var(--danger);
+}
+
+.footer__passcode {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.footer__passcode input {
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  background: var(--surface);
+  max-width: 12rem;
+}
+
+.footer__passcode input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-ring);
+}
+
+/* ---------------------------------------------------------------- bottom */
+.footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.25rem;
+}
+
+.footer__bottom p {
+  margin: 0;
+  font-size: 0.79rem;
+  color: var(--text-muted);
+}
+
+.footer__built {
+  font-family: var(--font-mono);
+  font-size: 0.75rem !important;
+}
+
+.footer__top-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.79rem;
+  font-weight: 600;
+  color: var(--text-soft);
+}
+
+.footer__top-link svg {
+  transform: rotate(-90deg);
+}
+
+@media (max-width: 900px) {
+  .footer__top {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

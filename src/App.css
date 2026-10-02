@@ -1,0 +1,27 @@
+/* App-level layout tweaks. Section styling lives in global.css and the
+   component stylesheets. */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  padding: 0.7rem 1rem;
+  background: var(--accent);
+  color: #ffffff;
+  border-radius: 0 0 var(--radius) 0;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+main {
+  display: block;
+}
+
+/* Give the first section a little breathing room under the sticky navbar. */
+main > section:first-child {
+  padding-top: clamp(2.25rem, 5vw, 3.5rem);
+}

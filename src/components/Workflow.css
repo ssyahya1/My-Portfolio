@@ -1,0 +1,116 @@
+.workflow {
+  margin-block: clamp(1.75rem, 4vw, 2.75rem);
+  padding: clamp(1.1rem, 2.6vw, 1.75rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(180deg, var(--surface) 0%, var(--bg-soft) 100%);
+}
+
+.workflow__title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.workflow__title-note {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+/* -------------------------------------------------------------- the track */
+.workflow__scroll {
+  overflow-x: auto;
+  padding-bottom: 0.35rem;
+  margin-bottom: 1.5rem;
+}
+
+.workflow__track {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-width: max-content;
+}
+
+.workflow__stage {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.workflow__dot {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--accent-data);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.workflow__stage-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.workflow__connector {
+  display: block;
+  width: clamp(18px, 3vw, 44px);
+  height: 2px;
+  margin-inline: 0.6rem;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--accent-data) 0 6px,
+    transparent 6px 11px
+  );
+}
+
+/* -------------------------------------------------------------- the cards */
+.workflow__cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
+  gap: 0.7rem;
+}
+
+.workflow__card {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.8rem 0.9rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-xs);
+}
+
+.workflow__card-step {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent-data);
+}
+
+.workflow__card-title {
+  font-size: 0.88rem;
+  font-weight: 650;
+}
+
+.workflow__card-detail {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}

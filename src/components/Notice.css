@@ -1,0 +1,37 @@
+.notice-banner {
+  position: sticky;
+  top: var(--nav-height);
+  z-index: 90;
+  padding-block: 0.6rem;
+  background: var(--bg);
+  animation: fade-in 200ms var(--ease);
+}
+
+.notice-banner .notice {
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.notice-banner .notice__body {
+  flex: 1 1 auto;
+}
+
+.notice__dismiss {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.notice__dismiss:hover {
+  opacity: 1;
+  border-color: currentColor;
+}

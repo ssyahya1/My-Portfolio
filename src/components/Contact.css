@@ -1,0 +1,102 @@
+.contact__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 1rem;
+}
+
+.contact__card {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: start;
+  padding: clamp(1rem, 2.2vw, 1.35rem);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xs);
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+.contact__card:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.contact__card--pending {
+  border-style: dashed;
+  background: var(--bg-soft);
+}
+
+.contact__card-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-soft);
+  color: var(--accent-text);
+}
+
+.contact__card--pending .contact__card-icon {
+  background: var(--bg-muted);
+  border-color: var(--border);
+  color: var(--text-muted);
+}
+
+.contact__card-body {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.contact__card-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-weight: 650;
+  color: var(--text-muted);
+}
+
+.contact__card-value {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.contact__card-value--pending {
+  color: var(--text-muted);
+  font-weight: 550;
+}
+
+.contact__card-note {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.contact__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.contact__cta h3 {
+  margin-bottom: 0.25rem;
+  font-size: 1.05rem;
+}
+
+.contact__cta p {
+  margin: 0;
+  max-width: 60ch;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,229 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+.navbar.is-scrolled {
+  border-bottom-color: var(--border);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25), 0 6px 18px -14px rgba(0, 0, 0, 0.75);
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: var(--nav-height);
+}
+
+/* ------------------------------------------------------------------ brand */
+.navbar__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--text);
+  flex: none;
+  min-width: 0;
+}
+
+.navbar__brand:hover {
+  color: var(--text);
+}
+
+.navbar__mark {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  flex: none;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+}
+
+.navbar__brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+  min-width: 0;
+}
+
+.navbar__brand-text strong {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.navbar__brand-role {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* -------------------------------------------------------------------- nav */
+.navbar__nav {
+  margin-inline: auto;
+}
+
+.navbar__list {
+  display: flex;
+  align-items: center;
+  gap: 0.28rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar__link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  font-weight: 550;
+  color: var(--text-soft);
+  transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+
+.navbar__link:hover {
+  border-color: var(--border);
+  background: var(--surface);
+  color: var(--text);
+}
+
+.navbar__link.is-active {
+  color: var(--text);
+  border-color: rgba(255, 59, 48, 0.38);
+  background: var(--accent-soft);
+}
+
+/* ---------------------------------------------------------------- actions */
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex: none;
+}
+
+.navbar__icon-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  padding: 0.42rem 0.62rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-soft);
+  font-size: 0.885rem;
+  font-weight: 550;
+}
+
+.navbar__icon-link:hover {
+  background: var(--bg-muted);
+  color: var(--text);
+}
+
+.navbar__toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.navbar__toggle:hover {
+  background: var(--bg-muted);
+}
+
+/* ----------------------------------------------------------- mobile panel */
+.navbar__mobile {
+  display: none;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+  padding: 0.6rem var(--gutter) 1rem;
+}
+
+.navbar__mobile-list {
+  list-style: none;
+  margin: 0 0 0.6rem;
+  padding: 0;
+  display: grid;
+  gap: 0.15rem;
+}
+
+.navbar__mobile-link {
+  display: block;
+  padding: 0.7rem 0.75rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-soft);
+  font-weight: 550;
+}
+
+.navbar__mobile-link:hover,
+.navbar__mobile-link.is-active {
+  background: var(--accent-soft);
+  color: var(--accent-text);
+}
+
+.navbar__mobile-github {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  padding: 0.35rem 0.75rem 0;
+  border-top: 1px solid var(--border);
+  margin-top: 0.4rem;
+  padding-top: 0.9rem;
+}
+
+@media (max-width: 1060px) {
+  .navbar__brand-role {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .navbar__nav,
+  .navbar__cta {
+    display: none;
+  }
+
+  .navbar__toggle {
+    display: inline-flex;
+  }
+
+  .navbar__mobile.is-open {
+    display: block;
+  }
+
+  .navbar__brand-text strong {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .navbar__icon-label {
+    display: none;
+  }
+
+  .navbar__brand-text strong {
+    white-space: normal;
+  }
+}
+
+.navbar__icon-link svg {
+  color: var(--accent);
+}

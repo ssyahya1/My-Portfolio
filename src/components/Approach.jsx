@@ -48,8 +48,7 @@ export default function Approach() {
     <section className="section" id="approach">
       <div className="container">
         <div className="section-head">
-          <span className="eyebrow">Development approach</span>
-          <h2>How I build</h2>
+          <h2>How I build robust applications</h2>
           <p className="lead">
             The same sequence shows up across the projects below — it is what keeps them from turning into
             demos that only work on one machine.

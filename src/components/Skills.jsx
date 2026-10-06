@@ -13,8 +13,7 @@ export default function Skills() {
     <section className="section" id="skills">
       <div className="container">
         <div className="section-head">
-          <span className="eyebrow">Skills</span>
-          <h2>Tools and areas I work in</h2>
+          <h2>Technical tools and areas I work in</h2>
           <p className="lead">
             Grouped by area rather than by claimed level. Everything in the engineering and data groups is
             used by at least one project below.

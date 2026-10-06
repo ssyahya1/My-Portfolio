@@ -15,35 +15,39 @@ export default function Hero() {
       <div className="container hero__inner">
         <div className="hero__copy">
           <Reveal>
-            <span className="eyebrow hero__availability">Software Engineer <span aria-hidden="true">|</span> Open to Opportunities</span>
+            <div className="hero__status-pill">
+              <span className="hero__status-dot" aria-hidden="true" />
+              <span>Available for Backend &amp; Full-Stack Roles</span>
+            </div>
           </Reveal>
 
           <Reveal delay={60}>
             <h1 className="hero__title">
-              Building Digital Products <span>with Code &amp; Creativity.</span>
+              Backend systems, reliable APIs, and applied data science.
             </h1>
           </Reveal>
 
           <Reveal delay={120}>
             <p className="lead hero__tagline">
-              Backend-first engineering, full-stack products, and data-driven applications built to work beyond the demo.
+              I am {SITE.name} — a software engineer building resilient server architectures, relational databases in
+              PostgreSQL, and production machine learning microservices.
             </p>
           </Reveal>
 
           <Reveal delay={180}>
             <div className="btn-row hero__cta">
               <a className="btn btn--primary" href="#projects">
-                View My Projects
-                <IconArrowRight width={17} height={17} />
+                Explore Projects
+                <IconArrowRight width={16} height={16} />
               </a>
               <a className="btn btn--outline" href="#contact">
-                Connect
+                Get In Touch
               </a>
             </div>
           </Reveal>
 
           <Reveal delay={210}>
-            <div className="hero__socials" aria-label="Social links">
+            <div className="hero__socials" aria-label="Direct contact and repositories">
               <a href={SITE.links.github} target="_blank" rel="noreferrer noopener">
                 <IconGitHub width={16} height={16} /> GitHub
               </a>
@@ -57,23 +61,14 @@ export default function Hero() {
           </Reveal>
 
           <Reveal delay={240}>
-            <dl className="hero__stats">
-              <div className="hero__stat">
-                <dt>Projects shown</dt>
-                <dd>{status === 'ready' ? stats.total : '—'}</dd>
-              </div>
-              <div className="hero__stat">
-                <dt>Categories</dt>
-                <dd>{status === 'ready' ? stats.categories : '—'}</dd>
-              </div>
-              <div className="hero__stat">
-                <dt>Data / ML projects</dt>
-                <dd>{status === 'ready' ? stats.dataProjects : '—'}</dd>
-              </div>
-            </dl>
-            <p className="hero__stats-note">
-              Counted automatically from the projects loaded from GitHub — nothing here is a hand-written number.
-            </p>
+            <div className="hero__telemetry">
+              <span className="hero__telemetry-badge mono">LIVE GITHUB SYNC</span>
+              <span className="hero__telemetry-text">
+                {status === 'ready'
+                  ? `${stats.total} repositories loaded dynamically across ${stats.categories} functional categories`
+                  : 'Syncing public repositories from GitHub…'}
+              </span>
+            </div>
           </Reveal>
         </div>
 
@@ -88,12 +83,12 @@ export default function Hero() {
             </div>
             <div className="hero__portrait-caption">
               <span className="hero__portrait-status" aria-hidden="true" />
-              Backend-first developer
+              <div>
+                <strong>{SITE.name}</strong>
+                <span className="hero__portrait-sub">Node.js · PostgreSQL · React · Python</span>
+              </div>
             </div>
           </div>
-          <ul className="hero__float-badges" aria-label="Areas of focus">
-            {BADGES.map((badge) => <li key={badge}>{badge}</li>)}
-          </ul>
         </Reveal>
       </div>
     </section>
